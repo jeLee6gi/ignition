@@ -40,6 +40,8 @@ class CertRecord:
             )
             fingerprint, expiration = fingerprint_with_expiration.split(";EXPIRES=")
             expiration_datetime = datetime.datetime.fromisoformat(expiration)
+            if expiration_datetime.tzinfo is None:
+                expiration_datetime = expiration_datetime.replace(tzinfo=datetime.UTC)
 
             return CertRecord(hostname, fingerprint, expiration_datetime)
         except Exception as e:
@@ -70,4 +72,4 @@ class CertRecord:
         Utility function to get current datetime, extracted for testing purposes
         Returns datetime
         """
-        return datetime.datetime.now()
+        return datetime.datetime.now(datetime.UTC)

@@ -31,7 +31,7 @@ class CertWrapper:
         """
         Access function for certificate expiration date
         """
-        return self.certificate.not_valid_after
+        return self.certificate.not_valid_after_utc
 
     def fingerprint(self) -> str:
         """
