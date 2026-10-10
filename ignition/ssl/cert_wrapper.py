@@ -8,6 +8,7 @@ at http://mozilla.org/MPL/2.0/.
 import cryptography
 from cryptography import x509
 from cryptography.hazmat.backends import default_backend
+import cryptography.hazmat.primitives.serialization
 
 
 class CertWrapper:
